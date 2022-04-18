@@ -11,7 +11,7 @@ Escrever uma API de cadastro de clientes (Nome, CPF, nascimento)
 - [ ]  Endpoint para buscar cliente por CPF
 - [ ]  Endpoint para listar todos os clientes (usando paginação)
 
-### Para cargos de fullstask
+### Para devs fullstask (desconsiderar caso seja um teste para backend)
 - [ ] Criar um telas para consumir a API
 
 #### Regras para validação do CPF
