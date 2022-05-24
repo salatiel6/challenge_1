@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ClientsViewSet(viewsets.ModelViewSet):
+    """Creating visualizer for Clients"""
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     pagination_class = DefaultPagination
@@ -16,3 +17,4 @@ class ClientsViewSet(viewsets.ModelViewSet):
     ]
     ordering_fields = ['name']
     search_fields = ['name', 'cpf']
+    filterset_fields = ['cpf']

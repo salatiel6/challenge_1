@@ -6,12 +6,12 @@ from rest_framework import serializers
 
 
 class ClientSerializer(serializers.ModelSerializer):
+    """Serializing request data to database"""
     class Meta:
         model = Client
         fields = '__all__'
 
     def validate(self, data):
-        validate.cpf_format(data['cpf'])
         validate.cpf_number(data['cpf'])
 
         data['cpf'] = re.sub(r'\W', '', data['cpf'])

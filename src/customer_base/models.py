@@ -6,6 +6,7 @@ class Client(models.Model):
     cpf = models.CharField(max_length=41, unique=True)
     birth_date = models.DateField()
 
+    # Explixit setting objects to default
     objects = models.Manager()
 
     def __str__(self):

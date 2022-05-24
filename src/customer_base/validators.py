@@ -10,7 +10,7 @@ def cpf_format(cpf):
 
     if (re.findall(cpf_masked_format, cpf) or re.findall(
             cpf_unmasked_format, cpf)) and cpf != cpf_all_equal:
-        return re.sub(r'\W', '', cpf)
+        return unmask_cpf(cpf)
     else:
         raise serializers.ValidationError({
             "cpf": "Formato do CPF inválido"
@@ -18,7 +18,9 @@ def cpf_format(cpf):
 
 
 def cpf_number(cpf):
-    unmasked_cpf = re.sub(r'\W', '', cpf)
+    cpf_format(cpf)
+
+    unmasked_cpf = unmask_cpf(cpf)
     new_cpf = unmasked_cpf[0:9]
     while len(new_cpf) < 11:
         if len(new_cpf) == 9:
@@ -42,4 +44,8 @@ def cpf_number(cpf):
             "cpf": "Número do CPF inválido"
         })
 
+    return unmask_cpf(cpf)
+
+
+def unmask_cpf(cpf):
     return re.sub(r'\W', '', cpf)
