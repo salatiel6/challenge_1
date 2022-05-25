@@ -4,7 +4,7 @@ import django.db
 import django.core.exceptions
 
 from customer_base.models import Client
-from rest_framework import serializers
+from customer_base.exceptions import InvalidCpfException
 from django.test import TestCase
 
 
@@ -27,10 +27,10 @@ class ClientTestCase(TestCase):
         for cpf in cpfs:
             try:
                 self.assertRaises(
-                    serializers.ValidationError,
+                    InvalidCpfException,
                     validate.cpf_number, cpf
                 )
-            except AssertionError:
+            except Exception:
                 raise Exception(f"Exception not thrown for this CPF: "
                                 f"{cpf}")
 
@@ -56,7 +56,6 @@ class ClientTestCase(TestCase):
 
         for birth_date in invalid_dates:
             try:
-                print(birth_date)
                 self.assertRaises(
                     django.core.exceptions.ValidationError,
                     Client.objects.create,

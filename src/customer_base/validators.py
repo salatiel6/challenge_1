@@ -1,6 +1,6 @@
 import re
 
-from rest_framework import serializers
+from customer_base.exceptions import InvalidCpfException
 
 
 def cpf_format(cpf):
@@ -11,9 +11,7 @@ def cpf_format(cpf):
             cpf_unmasked_format, cpf):
         return unmask_cpf(cpf)
     else:
-        raise serializers.ValidationError({
-            "cpf": "Formato do CPF inválido"
-        })
+        raise InvalidCpfException("Formato do CPF inválido")
 
 
 def cpf_number(cpf):
@@ -21,9 +19,7 @@ def cpf_number(cpf):
 
     cpf_all_equal = len(unmask_cpf(cpf)) * cpf[0]
     if unmask_cpf(cpf) == cpf_all_equal:
-        raise serializers.ValidationError({
-            "cpf": "Número do CPF inválido"
-        })
+        raise InvalidCpfException("Número do CPF inválido")
 
     unmasked_cpf = unmask_cpf(cpf)
     new_cpf = unmasked_cpf[0:9]
@@ -45,9 +41,7 @@ def cpf_number(cpf):
         new_cpf += str(digit)
 
     if new_cpf != unmasked_cpf:
-        raise serializers.ValidationError({
-            "cpf": "Número do CPF inválido"
-        })
+        raise InvalidCpfException("Número do CPF inválido")
 
     return unmask_cpf(cpf)
 
