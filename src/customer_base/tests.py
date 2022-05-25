@@ -25,13 +25,11 @@ class ClientTestCase(TestCase):
         wrong_length = "123456789"
         unmasked = "12345678900"
         masked = "306.539.380-77"
-
-        # FIXME: masked all equal cpfs passes through format validation but get
-        #        blocked on number validation
-        # masked_all_equal = "000.000.000-00"
+        masked_all_equal = "000.000.000-00"
 
         cpfs = [
-            all_equal, letters, masked_letters, wrong_length, unmasked, masked
+            all_equal, letters, masked_letters, wrong_length, unmasked, masked,
+            masked_all_equal
         ]
         for cpf in cpfs:
             try:

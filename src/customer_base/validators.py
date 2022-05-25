@@ -6,10 +6,9 @@ from rest_framework import serializers
 def cpf_format(cpf):
     cpf_masked_format = "[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}"
     cpf_unmasked_format = "[0-9]{11}"
-    cpf_all_equal = len(cpf) * cpf[0]
 
-    if (re.findall(cpf_masked_format, cpf) or re.findall(
-            cpf_unmasked_format, cpf)) and cpf != cpf_all_equal:
+    if re.findall(cpf_masked_format, cpf) or re.findall(
+            cpf_unmasked_format, cpf):
         return unmask_cpf(cpf)
     else:
         raise serializers.ValidationError({
@@ -19,6 +18,12 @@ def cpf_format(cpf):
 
 def cpf_number(cpf):
     cpf_format(cpf)
+
+    cpf_all_equal = len(unmask_cpf(cpf)) * cpf[0]
+    if unmask_cpf(cpf) == cpf_all_equal:
+        raise serializers.ValidationError({
+            "cpf": "Número do CPF inválido"
+        })
 
     unmasked_cpf = unmask_cpf(cpf)
     new_cpf = unmasked_cpf[0:9]
