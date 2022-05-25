@@ -1,6 +1,9 @@
 import customer_base.validators as validate
 import re
+import django.db
+import django.core.exceptions
 
+from customer_base.models import Client
 from rest_framework import serializers
 from django.test import TestCase
 
@@ -27,8 +30,44 @@ class ClientTestCase(TestCase):
                     serializers.ValidationError,
                     validate.cpf_number, cpf
                 )
-            except AssertionError as e:
-                raise AssertionError(f"{e}, CPF:{cpf}")
+            except AssertionError:
+                raise Exception(f"Exception not thrown for this CPF: "
+                                f"{cpf}")
+
+    def test_input_same_cpf(self) -> None:
+        with self.assertRaises(django.db.utils.IntegrityError):
+            Client.objects.create(
+                name="Chester Bennington",
+                cpf="98654661046",
+                birth_date="1976-03-20"
+            )
+
+            # Creating another client with the same cpf
+            Client.objects.create(
+                name="Mike Shinoda",
+                cpf="98654661046",
+                birth_date="1975-11-02"
+            )
+
+    def test_invalid_birth_date(self) -> None:
+        # Setting invalid formats of birth_date.
+        # Only format accepted is YYYY-MM-DD
+        invalid_dates = self.create_invalid_birth_dates()
+
+        for birth_date in invalid_dates:
+            try:
+                print(birth_date)
+                self.assertRaises(
+                    django.core.exceptions.ValidationError,
+                    Client.objects.create,
+                    name="Chester Bennington",
+                    cpf="98654661046",
+                    birth_date=birth_date
+                )
+
+            except Exception:
+                raise Exception(f"Exception not thrown for this BIRTH_DATE: "
+                                f"{birth_date}")
 
     @staticmethod
     def unmask_cpf(cpf) -> str:
@@ -50,3 +89,12 @@ class ClientTestCase(TestCase):
         ]
 
         return cpfs
+
+    @staticmethod
+    def create_invalid_birth_dates() -> []:
+        invalid_dates = [
+            "saddsfadfg", "", "12-01-19", "01-12-19", "19-12-01", "2022-30-30",
+            "2022/01/01"
+        ]
+
+        return invalid_dates
