@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/release-v1.0.0-gold)  
+![](https://img.shields.io/badge/release-v1.1.0-gold)  
 ![](https://img.shields.io/badge/python-v3.10.1-blue)
 ![](https://img.shields.io/badge/Django-v4.0.4-white)
 ![](https://img.shields.io/badge/mysqlclient-v2.1.0-000000)
