@@ -1,0 +1,8 @@
+[run]
+omit =
+    */migrations/*
+    customer_base/__init__.py
+    customer_base/admin.py
+    customer_base/apps.py
+    customer_base/tests.py
+    setup/__init__.py

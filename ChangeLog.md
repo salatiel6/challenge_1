@@ -1,3 +1,6 @@
+> ![](https://img.shields.io/badge/May_26,_2022-black) ![](https://img.shields.io/badge/v1.1.0-FEAT-blue)  
+> `Applied code coverage report`
+ 
 > ![](https://img.shields.io/badge/May_26,_2022-black) ![](https://img.shields.io/badge/v1.0.0-RELEASE-gold)  
 > `Application runnig on http://salatiel6.pythonanywhere.com`
 
