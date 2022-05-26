@@ -1,3 +1,4 @@
+`26 Mai, 2022` | `v0.4.2` - `FIX:` Allowed hosts for deplyoying it on web  
 `25 Mai, 2022` | `v0.4.1` - `REFACTOR:` Refactored exceptions for making invalid cpfs return code 422  
 `25 Mai, 2022` | `v0.4.0` - `FEAT:` Created tests unique cpfs and invalid birthdates  
 `25 Mai, 2022` | `v0.3.3` - `REFACTOR:` Moved invalid cpfs test creation to its own function  
