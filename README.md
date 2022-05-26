@@ -1,35 +1,36 @@
-# Desafio técnico
+![](https://img.shields.io/badge/release-v1.0.0-gold)  
+![](https://img.shields.io/badge/python-v3.10.1-blue)
+![](https://img.shields.io/badge/Django-v4.0.4-white)
+![](https://img.shields.io/badge/mysqlclient-v2.1.0-000000)
 
-Escrever uma API de cadastro de clientes (Nome, CPF, nascimento)
+![](https://img.shields.io/badge/passed_tests-5-brightgreen)
+![](https://img.shields.io/badge/failed_tests-0-red)
 
-**Importante:** Validar o CPF antes de gravar o cliente no banco de dados
+<h1><p align="center">Customer Base Challenge</p></h1>
 
-## Informações técnicas
+Aplicação criada sobre os padrões dos frameworks `Django` e `django_rest_framework`, na liguagem `python`.  
+Administração de dados feita no `SQLite` possibilitando todas as interações pedidas no desafio.  
+API alocado em servidor da `Python Anywhere`, permitindo assim acessos externos.
 
-### Endpoints
-- [ ]  Endpoint para criar clientes (esse endpoint deve retornar um 422 caso o cpf seja inválido)
-- [ ]  Endpoint para buscar cliente por CPF
-- [ ]  Endpoint para listar todos os clientes (usando paginação)
+<h2><p align="center">EndPoints</p></h2>
 
-### Para devs fullstack (desconsiderar caso seja um teste para backend)
-- [ ] Criar uma página para consumir a API
+Cadastrar Clientes:
+> ![](https://img.shields.io/badge/method-POST-purple)  
+> `url`: `http://salatiel6.pythonanywhere.com/clients/`  
+>
+> `body example`:
+> ```
+> {
+>     "name": "Client Name",
+>     "cpf": "495.290.350-80",
+>     "birth_date": "1975-02-11"
+> }
+> ```
 
-#### Regras para validação do CPF
-- O CPF pode ser passado em dois formatos: 
-  - 999.999.999-00 (com máscara)
-  - 99999999900 (somente números)
-  
-- Para validação da numeração do CPF pode utilizar as regras do seguinte link: https://www.macoratti.net/alg_cpf.htm#:~:text=O%20algoritmo%20de%20valida%C3%A7%C3%A3o%20do,%3A%20111.444.777%2D05.
+Buscar cliente por CPF:
+> ![](https://img.shields.io/badge/method-GET-pink)  
+> `url`: `http://salatiel6.pythonanywhere.com/clients/?cpf=49529035080`  (cpf sempre sem máscara)
 
-
-## Requisitos 
-- Escrever o algoritmo de validação do CPF manualmente (**NÃO** usar libs prontas para isso)
-- **Crie um fork desse repositório** para nos enviar o desafio
-- Utilize uma linguagem que possibilite o uso de orientação a objetos como Java, C#, Python, Javascript, etc
-- Escolha o banco de dados de sua preferência
-
-
-## Recomendações
-- Lembre-se de utilizar boas práticas como: testes, orientação a objetos, design patterns, logs, documentação, etc.
-- É importante ser bem simples rodar sua aplicação em qualquer servidor (independente do sistema operacional ou outros softwres instalados). 
-- Escreva um Readme.md (explique como subir sua aplicação, tecnologias utilizadas, e como rodar os testes)
+Listar todos os clientes:
+> ![](https://img.shields.io/badge/method-GET-pink)  
+> `url`: `http://salatiel6.pythonanywhere.com/clients/?page=1`

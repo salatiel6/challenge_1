@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-haft0=3-&u#@6+5k!a04m6@$&_kd-5k6uln^1ftl)' \
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                 'http://salatiel6.pythonanywhere.com/']
+                 'salatiel6.pythonanywhere.com']
 
 
 # Application definition
