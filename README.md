@@ -35,3 +35,27 @@ Buscar cliente por CPF:
 Listar todos os clientes:
 > ![](https://img.shields.io/badge/method-GET-pink)  
 > `url`: `http://salatiel6.pythonanywhere.com/clients/?page=1`
+
+
+`git clone https://github.com/salatiel6/challenge_1.git`
+
+`cd challenge_1`  
+`open challenge_1`
+
+`python -m venv ./venv`
+
+`venv\Scripts\activate`  
+`source venv/bin/activate`
+
+`pip install -r requirements.txt`
+
+`cd src`  
+`open src`
+
+`coverage run manage.py test -v 2`  
+
+`coverage report`
+
+`python manage.py migrate`
+
+`python manage.py runserver`
