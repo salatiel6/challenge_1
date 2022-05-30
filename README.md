@@ -34,7 +34,7 @@ Register clients:
 
 Search client by CPF:
 > ![](https://img.shields.io/badge/method-GET-pink)  
-> `url`: `http://salatiel6.pythonanywhere.com/clients/?cpf=49529035080`  (cpf sempre sem máscara)
+> `url`: `http://salatiel6.pythonanywhere.com/clients/?cpf=49529035080`  (cpf always without mask)
 
 ---
 
