@@ -7,7 +7,35 @@
 ![](https://img.shields.io/badge/failed_tests-0-red)  
 ![](https://img.shields.io/badge/coverage-94%25-green)
 
-# Customer Base Challenge
+# Technical Challenge
+
+Write a customer registration API (Name, CPF, Birth)  
+**Important**: Validate the CPF before recording the customer in the database
+
+## Technical information
+
+### Endpoints
+- Endpoint to create clients (this endpoint should return a 422 if the cpf is invalid)
+- Endpoint to search for customer by CPF
+- Endpoint to list all clients (using pagination)
+
+### CPF validation rules
+
+The CPF can be passed in two formats:
+- 999.999.999-00 (with mask)
+- 99999999900 (numbers only)
+
+To validate the CPF numbering, you must use the official rules for the algorithm
+
+### Requirements
+
+- Write CPF validation algorithm manually (DO NOT use ready-made libs for this)
+- Use a language that allows the use of object orientation such as Java, C#, Python, Javascript, etc.
+- Choose your preferred database
+
+---
+
+# Solution
 
 Application created on the standards of the `Django` and `django_rest_framework` frameworks, in the `python` language.  
 Data administration done in `SQLite` allowing all interactions requested in the challenge.  
